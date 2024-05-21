@@ -2,3 +2,6 @@
 en:
   app_name: 'Ecommerce'
   meta_title: 'Ecommerce - the best place for your shopping'
+header_admin:
+   dashboard: 'Dashboard'
+   categories: 'Categories'

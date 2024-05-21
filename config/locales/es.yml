@@ -1,4 +1,7 @@
 ---
 es:
   app_name: 'Tienda online'
-  meta_title: 'Ecommerce - la mejor tienda para tus compras'
+  meta_title: 'Tienda online - El mejor lugar para tus compras'
+  header_admin:
+    dashboard: 'Tablero'
+    categories: 'Categorías'
