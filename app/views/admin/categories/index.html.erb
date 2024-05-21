@@ -10,9 +10,21 @@
     <%= link_to "New category", new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <div>
+    <table class="w-full">
+      <thead>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Name</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Description</th>
+        <th class="border border-slate-300 p-3 text-left bg-slate-50">Actions</th>  
+      </thead>
+      <tbody>
+        <%= render @categories %>
+      </tbody>
+    </table>
+  </div>
+
   <div id="categories" class="min-w-full">
     <% @categories.each do |category| %>
-      <%= render category %>
       <p>
         <%= link_to "Show this category", category, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
