@@ -8,10 +8,16 @@
     <strong class="block font-medium mb-1">Description:</strong>
     <%= category.description %>
   </p> 
+   
+   <div class="my-5">
+   <strong class="block font-medium mb-1">Image:</strong>
+   <%= category.image.present? ? image_tag(category.image) : image_tag("https://via.placeholder.com/50") %>
+   </div>
+  
 
   <% if action_name != "show" %>
-  <%= link_to "show this category", category, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "edit this category", edit_category_path(category), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "show this category", [:admin, category], class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "edit this category", edit_admin_category_path(category), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <hr class="mt-6">
   <% end %>
 

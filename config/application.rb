@@ -26,5 +26,7 @@ module Ecommerce
 
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :es
+    config.active_storage.variant_processor = :mini_magick
+
   end
 end
