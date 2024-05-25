@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :stocks
+    resources :orders
     resources :categories
-    resources :products
+    resources :products do
+    resources :stocks
+    end
   end
 
   get "admin" => "admin#index"
 end
-
