@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     resources :stocks
     end
   end
-
+resources :categories, only: [:show]
   get "admin" => "admin#index"
 end

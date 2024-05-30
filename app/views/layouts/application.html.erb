@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <main class="flex flex-col">
-      <%= render 'shared/header_user' %>
+    <header>
+    <%= render 'shared/header_user' %>
+    </header>
+    <main class="container mx-auto mt-28 max-w-7x1 px-2 sm:px-6 lg:px-8">
       <%= yield %>
     </main>
   </body>
