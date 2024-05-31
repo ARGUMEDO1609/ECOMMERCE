@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     end
   end
 resources :categories, only: [:show]
+resources :products, only: [:show]
   get "admin" => "admin#index"
 end
