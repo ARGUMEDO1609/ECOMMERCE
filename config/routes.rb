@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins
-  get 'home/index'
-
-  # Defines the root path route ("/")
   root "home#index"
 
-  authenticate :admin_user do
+  # Defines the /admin path route
+  authenticated :admin_user do
     root to: "admin#index", as: :admin_root
   end
 
@@ -13,10 +11,12 @@ Rails.application.routes.draw do
     resources :orders
     resources :categories
     resources :products do
-    resources :stocks
+      resources :stocks
     end
   end
-resources :categories, only: [:show]
-resources :products, only: [:show]
+
+  resources :categories, only: [:show]
+  resources :products, only: [:show]
   get "admin" => "admin#index"
+  get "cart" => "cart#show"
 end
