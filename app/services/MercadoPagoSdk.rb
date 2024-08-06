@@ -1,15 +1,16 @@
 class MercadoPagoSdk
-require "mercadopago"
+  require 'mercadopago'
+
   def initialize
-    @access_token = ENV["MP_ACCESS_TOKEN"]
+    @access_token = ENV['MP_ACCESS_TOKEN']
   end
 
   def create_preference(line_items, shipping_details)
-    mp = MercadoPago::SDK.new(@access_token)
+    mp = Mercadopago::SDK.new(@access_token)
     preference_data = {
       "back_urls": {
         "success": Rails.env.production? ? "https://yourapp.com/success" : "http://localhost:3000/success",
-        "failure": Rails.env.production? ? "https://yourapp.com/failure" : "http://localhost:3000/failure",
+        "failure": Rails.env.production? ? "https://yourapp.com/cancel" : "http://localhost:3000/cancel",
       },
       "payer": {
         "address": {

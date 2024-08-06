@@ -9,8 +9,8 @@
   </div>
 
   <div class="mb-8">
+    <h2 class="my-4">Not Fulfilled Orders</h2>
     <table class="w-full table">
-      <h2 class="my-4">Not Fulfilled Orders</h2>
       <thead>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Customer Email</th>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Fulfilled</th>
@@ -32,11 +32,12 @@
         <% end %>
       </tbody>
     </table>
+    <%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
   </div>
 
-   <div>
+  <div>
+    <h2 class="my-4">Fulfilled Orders</h2>
     <table class="w-full table">
-      <h2 class="my-4">Fulfilled Orders</h2>
       <thead>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Customer Email</th>
         <th class="border border-slate-300 p-3 text-left bg-slate-50">Fulfilled</th>
@@ -58,5 +59,6 @@
         <% end %>
       </tbody>
     </table>
+    <%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
   </div>
 </div>

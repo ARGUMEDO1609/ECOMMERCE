@@ -19,7 +19,7 @@
     <%= order.address %>
   </p>
 
-   <% if order.order_products.any? %>
+  <% if order.order_products.any? %>
     <strong class="block font-medium mb-1">Products:</strong>
     <% order.order_products.each do |order_product| %>
       <div class="flex justify-between w-2/3">
@@ -39,10 +39,9 @@
     <% end %>
   <% end %>
 
-    <% if action_name != "show" %>
+  <% if action_name != "show" %>
     <%= link_to "Show this order", [:admin, order], class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this order", edit_admin_order_path(order), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
-
 </div>

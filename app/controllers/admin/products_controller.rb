@@ -1,9 +1,13 @@
 class Admin::ProductsController < AdminController
-  before_action :set_admin_product, only: %i[show edit update destroy]
+  before_action :set_admin_product, only: %i[ show edit update destroy ]
 
   # GET /admin/products or /admin/products.json
   def index
-    @admin_products = Product.all
+    if params[:query].present?
+      @pagy, @admin_products = pagy(Product.where("name ILIKE ?", "%#{params[:query]}%"))
+    else
+      @pagy, @admin_products = pagy(Product.all)
+    end
   end
 
   # GET /admin/products/1 or /admin/products/1.json
@@ -37,8 +41,8 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1 or /admin/products/1.json
   def update
     @admin_product = Product.find(params[:id])
-    byebug
-    if @admin_product.update(product_params.except(:images))
+
+    if @admin_product.update(product_params.reject { |k| k["images"] })
       if product_params[:images]
         product_params[:images].each do |image|
           @admin_product.images.attach(image)
@@ -61,19 +65,16 @@ class Admin::ProductsController < AdminController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_admin_product
+      @admin_product = Product.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_admin_product
-    @admin_product = Product.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def product_params
-    params.require(:product).permit(
-      :name, :description,
-      :price, :category_id, :active,
-      images: []
-    )
-  end
+    # Only allow a list of trusted parameters through.
+    def product_params
+      params.require(:product).permit(
+        :name, :description,
+        :price, :category_id, :active,
+        images: [])
+    end
 end
-

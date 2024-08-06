@@ -49,6 +49,7 @@ gem "image_processing", "~> 1.2"
 gem "devise", "~> 4.9"
 gem "font-awesome-sass"
 gem 'mercadopago-sdk'
+gem 'pagy'
 
 
 group :development, :test do

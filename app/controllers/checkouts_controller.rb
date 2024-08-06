@@ -29,8 +29,8 @@ class CheckoutsController < ApplicationController
       zip_code: params[:shipping_details][:zip_code]
     }
 
-    payment_url = MercadoPagoSdk.new.create_preference(line_items)
-   render json: {url: payment_url }
+    payment_url = MercadoPagoSdk.new.create_preference(line_items, shipping_details)
+    render json: { url: payment_url }
   end
 
   def success
